@@ -1,43 +1,60 @@
-:root {
-    --text--principal: rgb(0, 247, 255);
-    --text--pergunta: rgb(216, 147, 19);
+root{
+--texto-principal: rgb(6, 200, 214);
+--texto-pergunta: rgb(6, 117, 151);
+--texto-resposta: rgb(5, 96, 124);
 }
 
-
 body {
-    background: url('plano\ de\ fundo.jpg');
+    background: url('plano\ de\ fundo.webp');
     background-repeat: no-repeat;
-    background-size: 100;
+    background-size: 100%;
     font-family: Bai Jamjuree;
 }
 
-#container {
+#container{
     display: flex;
 }
 
-.cartao {
+.cartao{
     margin: 1rem 1rem;
     height: 20rem;
     flex-grow: 1;
     flex-basis: calc(33% - 6rem);
 }
 
-    .cartao__conteudo {
-        text-align: center;
-        border: 1px solid var(--text--principal);
-        height: 100%;
-    }
+.cartao__conteudo{
+    text-align: center;
+    border: 1px solid var(--texto-principal);
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 300ms ease-in-out;
+}
 
-    .cartao__conteudo h3 {
-        color: var(--text--principal);
-       border: 1px solid var(--text--principal);
-        text-align: left;
-        padding: 0.5rem;
-        position: absolute;
-        margin: 0.6rem;
-        border-radius: 0.6rem;
-        font-size: 1vw;
-    }
+.cartao__conteudo h3{
+    color: var(--texto-principal);
+    border: 1px solid var(--texto-principal);
+    text-align: left;
+    padding: 0.5rem;
+    position: absolute;
+    margin: 0.6rem;
+    border-radius: 0.6rem;
+    font-size: 1vw;
+    backface-visibility: hidden;
+}
+
+.cartao__conteudo__pergunta{
+    color: var(--texto-pergunta);
+    font-size: 22px;
+    font-weight: 600;
+    margin-left: 2em;
+}
+.cartao__conteudo__resposta{
+    color: var(--texto-resposta);
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 2em;
+    transform: rotateY(180deg);
+}
 footer {
     background-color: black;
     color: white;
@@ -51,4 +68,15 @@ footer p {
     text-align: center;
     font-size: 0.6rem;
     margin-top: 0.5rem;
+}
+
+.cartao:hover .cartao__conteudo{
+    transform: rotateY(180deg);
+}
+
+.cartao__conteudo__pergunta, .cartao__conteudo__resposta{
+    backface-visibility: hidden;
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }
